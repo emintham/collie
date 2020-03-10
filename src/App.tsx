@@ -1,22 +1,14 @@
-import React, { useState, useMemo } from "react";
-import "./App.css";
-import { Slate, Editable, withReact } from "slate-react";
-import { createEditor, Node } from "slate";
+import React from "react";
+import Editor from "./editor/Editor";
 
 const App = () => {
-  const editor = useMemo(() => withReact(createEditor()), []);
-  const [value, setValue] = useState<Node[]>([
+  const initialValue = [
     {
       type: "paragraph",
       children: [{ text: "A line of text." }]
     }
-  ]);
-
-  return (
-    <Slate editor={editor} value={value} onChange={value => setValue(value)}>
-      <Editable />
-    </Slate>
-  );
+  ];
+  return <Editor initialValue={initialValue} />;
 };
 
 export default App;
