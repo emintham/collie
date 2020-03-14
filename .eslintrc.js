@@ -6,5 +6,13 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
-  ]
+  ],
+  rules: {
+    "@typescript-eslint/interface-name-prefix": [
+      "error",
+      {
+        prefixWithI: "always"
+      }
+    ]
+  }
 };

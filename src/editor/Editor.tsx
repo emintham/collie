@@ -1,6 +1,9 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import { Slate, Editable, withReact } from "slate-react";
 import { createEditor, Node } from "slate";
+import { renderElement } from "../elements";
+import { renderLeaf } from "../elements/Leaf";
+import KeyHandler from "./KeyHandler";
 
 interface IEditorProps {
   initialValue?: Node[];
@@ -12,7 +15,11 @@ const Editor = (props: IEditorProps) => {
 
   return (
     <Slate editor={editor} value={value} onChange={value => setValue(value)}>
-      <Editable />
+      <Editable
+        renderElement={useCallback(renderElement, [])}
+        renderLeaf={useCallback(renderLeaf, [])}
+        onKeyDown={KeyHandler(editor)}
+      />
     </Slate>
   );
 };
