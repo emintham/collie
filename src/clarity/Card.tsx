@@ -1,10 +1,7 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, ReactNodeArray } from "react";
 
 interface ICardProps {
-  title?: string;
   children: ReactNode | string;
-  header?: CardHeader;
-  footer?: CardFooter;
 }
 
 interface ICardHeaderProps {
@@ -17,6 +14,11 @@ interface ICardFooterProps {
 
 interface ICardTitleProps {
   title: string;
+}
+
+interface ICardBlockProps {
+  title?: string;
+  children?: ReactNode;
 }
 
 export class CardHeader extends React.PureComponent<ICardHeaderProps> {
@@ -35,7 +37,7 @@ const CardTitle = (props: ICardTitleProps): JSX.Element => {
   return <div className={"card-title"}>{props.title}</div>;
 };
 
-const Card = (props: ICardProps): JSX.Element => {
+export const CardBlock = (props: ICardBlockProps): JSX.Element => {
   let content = null;
   if (typeof props.children === "string") {
     content = <div className={"card-text"}>{props.children}</div>;
@@ -44,15 +46,15 @@ const Card = (props: ICardProps): JSX.Element => {
   }
 
   return (
-    <div className={"card"}>
-      {props.header}
-      <div className={"card-block"}>
-        {props.title && <CardTitle title={props.title} />}
-        {content}
-      </div>
-      {props.footer}
+    <div className={"card-block"}>
+      {props.title && <CardTitle title={props.title} />}
+      {content}
     </div>
   );
+};
+
+const Card = (props: ICardProps): JSX.Element => {
+  return <div className={"card"}>{props.children}</div>;
 };
 
 export default Card;
