@@ -1,7 +1,9 @@
 import React from "react";
-import Editor from "./editor/Editor";
-import MainContainer from "./clarity/MainContainer";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ContentContainer from "./clarity/ContentContainer";
+import MainContainer from "./clarity/MainContainer";
+import Editor from "./editor/Editor";
+import Navbar from "./navbar/Navbar";
 
 const App = () => {
   const initialValue = [
@@ -12,11 +14,18 @@ const App = () => {
   ];
 
   return (
-    <MainContainer>
-      <ContentContainer>
-        <Editor initialValue={initialValue} />
-      </ContentContainer>
-    </MainContainer>
+    <Router>
+      <MainContainer>
+        <Navbar />
+        <ContentContainer>
+          <Switch>
+            <Route path="/editor">
+              <Editor initialValue={initialValue} />
+            </Route>
+          </Switch>
+        </ContentContainer>
+      </MainContainer>
+    </Router>
   );
 };
 
