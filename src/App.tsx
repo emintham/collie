@@ -4,6 +4,7 @@ import ContentContainer from "./clarity/ContentContainer";
 import MainContainer from "./clarity/MainContainer";
 import Editor from "./editor/Editor";
 import Navbar from "./navbar/Navbar";
+import Login from "./login/Login";
 
 const App = () => {
   const initialValue = [
@@ -21,6 +22,9 @@ const App = () => {
           <Switch>
             <Route path="/editor">
               <Editor initialValue={initialValue} />
+            </Route>
+            <Route path="/login">
+              <Login />
             </Route>
           </Switch>
         </ContentContainer>
