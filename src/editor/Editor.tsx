@@ -1,11 +1,16 @@
-import React, { useState, useMemo, useCallback } from "react";
-import { AriaAttributes, DOMAttributes } from "react";
-import { Slate, Editable, withReact } from "slate-react";
+import React, {
+  AriaAttributes,
+  DOMAttributes,
+  useCallback,
+  useMemo,
+  useState
+} from "react";
 import { createEditor, Node } from "slate";
-import { renderElement } from "../elements";
+import { Editable, Slate, withReact } from "slate-react";
+import Card, { CardBlock } from "../clarity/Card";
+import { renderElement } from "../elements/Element";
 import { renderLeaf } from "../elements/Leaf";
 import KeyHandler from "./KeyHandler";
-import Card, { CardBlock } from "../clarity/Card";
 import Toolbar from "./toolbar/Toolbar";
 
 interface IEditorProps {

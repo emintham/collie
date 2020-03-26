@@ -36,3 +36,19 @@ export const formatCode = (editor: SlateEditor) => {
     { match: n => Helper.isBlock(editor, n) }
   );
 };
+
+export const formatContentHeader = (editor: SlateEditor) => {
+  const [match] = Helper.nodes(editor, {
+    match: n => n.type === "h2"
+  });
+
+  Transforms.setNodes(editor, { type: match ? "paragraph" : "h2" });
+};
+
+export const formatSectionHeader = (editor: SlateEditor) => {
+  const [match] = Helper.nodes(editor, {
+    match: n => n.type === "h3"
+  });
+
+  Transforms.setNodes(editor, { type: match ? "paragraph" : "h3" });
+};

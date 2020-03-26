@@ -1,20 +1,24 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import { RenderLeafProps } from "slate-react";
 
-const Leaf = (props: RenderLeafProps): ReactElement => (
-  <span
-    {...props.attributes}
-    style={{
-      fontWeight: props.leaf.bold ? "bold" : "normal",
-      fontStyle: props.leaf.italic ? "italic" : "normal"
-    }}
-  >
-    {props.children}
-  </span>
-);
-
 export const renderLeaf = (props: RenderLeafProps): JSX.Element => {
-  return <Leaf {...props} />;
-};
+  let { children } = props;
 
-export default Leaf;
+  if (props.leaf.bold) {
+    children = <strong>{children}</strong>;
+  }
+
+  if (props.leaf.italic) {
+    children = <em>{children}</em>;
+  }
+
+  if (props.leaf.underline) {
+    children = <u>{children}</u>;
+  }
+
+  if (props.leaf.strikethrough) {
+    children = <del>{children}</del>;
+  }
+
+  return <span {...props.attributes}>{children}</span>;
+};
