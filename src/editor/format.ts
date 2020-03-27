@@ -1,7 +1,9 @@
 import { Editor as Helper, Transforms, Text } from "slate";
 import { SlateEditor } from "../common/slate";
 
-export const formatBold = (editor: SlateEditor) => {
+export type FormatterFunc = (editor: SlateEditor) => void;
+
+export const formatBold: FormatterFunc = editor => {
   const [match] = Helper.nodes(editor, {
     match: n => n.bold === true
   });
@@ -13,7 +15,7 @@ export const formatBold = (editor: SlateEditor) => {
   );
 };
 
-export const formatItalic = (editor: SlateEditor) => {
+export const formatItalic: FormatterFunc = editor => {
   const [match] = Helper.nodes(editor, {
     match: n => n.italic === true
   });
@@ -25,7 +27,7 @@ export const formatItalic = (editor: SlateEditor) => {
   );
 };
 
-export const formatCode = (editor: SlateEditor) => {
+export const formatCode: FormatterFunc = editor => {
   const [match] = Helper.nodes(editor, {
     match: n => n.type === "code"
   });
@@ -37,7 +39,7 @@ export const formatCode = (editor: SlateEditor) => {
   );
 };
 
-export const formatContentHeader = (editor: SlateEditor) => {
+export const formatContentHeader: FormatterFunc = editor => {
   const [match] = Helper.nodes(editor, {
     match: n => n.type === "h2"
   });
@@ -45,7 +47,7 @@ export const formatContentHeader = (editor: SlateEditor) => {
   Transforms.setNodes(editor, { type: match ? "paragraph" : "h2" });
 };
 
-export const formatSectionHeader = (editor: SlateEditor) => {
+export const formatSectionHeader: FormatterFunc = editor => {
   const [match] = Helper.nodes(editor, {
     match: n => n.type === "h3"
   });

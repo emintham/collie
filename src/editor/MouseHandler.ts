@@ -1,7 +1,6 @@
 import { SlateEditor } from "../common/slate";
 import React from "react";
-
-type FormatterFunc = (e: SlateEditor) => void;
+import { FormatterFunc } from "./format";
 
 export const makeMouseHandler = (
   formatterFunc: FormatterFunc,
