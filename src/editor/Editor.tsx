@@ -1,10 +1,4 @@
-import React, {
-  AriaAttributes,
-  DOMAttributes,
-  useCallback,
-  useMemo,
-  useState
-} from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { createEditor, Node } from "slate";
 import { Editable, Slate, withReact } from "slate-react";
 import Card, { CardBlock } from "../clarity/Card";

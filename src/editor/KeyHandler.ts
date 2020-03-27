@@ -3,7 +3,9 @@ import React from "react";
 import { formatBold, formatItalic } from "./format";
 import { modKeyPressed } from "../common/keyboard";
 
-const KeyHandler = (editor: SlateEditor) => (event: React.KeyboardEvent) => {
+type KeyHandlerFunc = (editor: SlateEditor) => React.KeyboardEventHandler;
+
+const KeyHandler: KeyHandlerFunc = editor => event => {
   if (!modKeyPressed) {
     return;
   }

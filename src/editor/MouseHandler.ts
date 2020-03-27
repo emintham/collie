@@ -1,11 +1,16 @@
-import { SlateEditor } from "../common/slate";
 import React from "react";
+import { SlateEditor } from "../common/slate";
 import { FormatterFunc } from "./format";
 
-export const makeMouseHandler = (
+type MouseHandlerFuncFactory = (
   formatterFunc: FormatterFunc,
   editor: SlateEditor
-) => (event: React.MouseEvent) => {
+) => React.MouseEventHandler;
+
+export const makeMouseHandler: MouseHandlerFuncFactory = (
+  formatterFunc,
+  editor
+) => event => {
   event.preventDefault();
   formatterFunc(editor);
 };
