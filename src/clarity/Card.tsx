@@ -1,33 +1,25 @@
 import React, { ReactNode } from "react";
+import { IChildrenOptional } from "../common/react";
 
 interface ICardProps {
   children: ReactNode | string;
-}
-
-interface ICardHeaderProps {
-  children?: ReactNode;
-}
-
-interface ICardFooterProps {
-  children?: ReactNode;
 }
 
 interface ICardTitleProps {
   title: string;
 }
 
-interface ICardBlockProps {
+interface ICardBlockProps extends IChildrenOptional {
   title?: string;
-  children?: ReactNode;
 }
 
-export class CardHeader extends React.PureComponent<ICardHeaderProps> {
+export class CardHeader extends React.PureComponent<IChildrenOptional> {
   render() {
     return <div className={"card-header"}>{this.props.children}</div>;
   }
 }
 
-export class CardFooter extends React.PureComponent<ICardFooterProps> {
+export class CardFooter extends React.PureComponent<IChildrenOptional> {
   render() {
     return <div className={"card-footer"}>{this.props.children}</div>;
   }
